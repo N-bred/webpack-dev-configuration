@@ -8,10 +8,15 @@ module.exports = {
    },
    output: {
       path: path.resolve(__dirname, 'dist'),
-      filename: 'js/[name].js'
+      filename: '[name].js'
    },
    module: {
       rules: [
+         {
+            test: /\.html$/,
+            use: ['html-loader']
+         },
+
          {
             test: /\.css$/,
             use: ['style-loader', 'css-loader']
@@ -19,6 +24,10 @@ module.exports = {
          {
             test: /\.(scss|sass)$/,
             use: ['style-loader', 'css-loader', 'sass-loader']
+         },
+         {
+            test: /\.(png|jpg|jpeg|gif|svg|ico)$/,
+            use: 'file-loader?name=[name].[hash].[ext]&outputPath=./assets/img'
          }
       ]
    },

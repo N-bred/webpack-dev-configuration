@@ -13,7 +13,7 @@ module.exports = {
    },
    output: {
       path: path.resolve(__dirname, 'dist'),
-      filename: 'js/[name].[contentHash].js'
+      filename: '[name].[contentHash].js'
    },
    optimization: {
       minimizer: [new OptimizeCssAssetsPlugin(), new TerserPlugin()]
@@ -47,16 +47,15 @@ module.exports = {
    },
    plugins: [
       new MiniCssExtractPlugin({
-         filename: 'css/[name].[contentHash].css',
-         chunkFilename: 'css/[id].css'
+         filename: '[name].[contentHash].css',
+         chunkFilename: '[id].css'
       }),
       new HtmlWebpackPlugin({
          filename: 'index.html',
          template: './src/index.html',
          minify: {
             collapseWhitespace: true,
-            removeComments: true,
-            removeAttributeQuotes: true
+            removeComments: true
          }
       }),
       new CleanWebpackPlugin()
